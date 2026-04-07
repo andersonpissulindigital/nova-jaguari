@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Jaguari | O Seu Refúgio em Santana de Parnaíba</title>
+    <!-- Google Fonts: Inter & Cormorant Garamond -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate-gray: #2F4F4F;
+            --eucalyptus-green: #556B2F;
+            --copper: #B87333;
+            --off-white: #FAF9F6;
+            --glass: rgba(250, 249, 246, 0.85);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--off-white);
+            color: var(--slate-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* --- Layout --- */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(250, 249, 246, 0.1);
+            border-bottom: 1px solid rgba(47, 79, 79, 0.1);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--slate-gray);
+            letter-spacing: 1px;
+        }
+
+        /* --- Hero --- */
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10%;
+            background: linear-gradient(rgba(47, 79, 79, 0.6), rgba(47, 79, 79, 0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--copper);
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: inline-block;
+            border: 1px solid var(--copper);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--copper);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(184, 115, 51, 0.2);
+        }
+
+        /* --- Sections --- */
+
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-tag {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--copper);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .text-side h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .img-side img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        /* --- Conversion Section --- */
+
+        .conversion {
+            background-color: var(--slate-gray);
+            color: var(--off-white);
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto 0;
+            padding: 50px;
+            background: rgba(250, 249, 246, 0.05);
+            border: 1px solid rgba(250, 249, 246, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: transparent;
+            border: 1px solid rgba(250, 249, 246, 0.3);
+            color: white;
+            font-family: inherit;
+            border-radius: 4px;
+        }
+
+        input::placeholder {
+            color: rgba(250, 249, 246, 0.5);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: rgba(250, 249, 246, 0.1);
+            margin-bottom: 40px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--copper);
+            width: 50%;
+            transition: var(--transition);
+        }
+
+        /* --- Animations --- */
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive --- */
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            header { height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">NOVA JAGUARI</div>
+        <a href="#contato" class="btn-primary" style="padding: 10px 20px;">Falar com Consultor</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>A última fronteira de valorização estratégica.</h1>
+            <p>15 minutos de Alphaville. Silêncio absoluto. Paisagismo assinado por Marcelo Faisal. Onde sua família cria raízes.</p>
+            <a href="#contato" class="btn-primary">Ver Tabela de Unidades</a>
+        </div>
+    </section>
+
+    <section id="conceito">
+        <div class="grid">
+            <div class="text-side">
+                <span class="section-tag">O CONCEITO</span>
+                <h2>Sua vida merece o respiro de Santana de Parnaíba.</h2>
+                <p>O Nova Jaguari não é apenas um endereço, é um ecossistema de bem-estar. Aqui, a arquitetura moderna se integra à reserva verde preservada, proporcionando o equilíbrio ideal entre a agitação urbana e a paz do campo.</p>
+            </div>
+            <div class="img-side">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200" alt="Arquitetura Nova Jaguari">
+            </div>
+        </div>
+    </section>
+
+    <section class="conversion" id="contato">
+        <span class="section-tag">PRE-QUALIFICAÇÃO</span>
+        <h2>Inicie sua jornada exclusiva.</h2>
+        <p>Receba a apresentação técnica e a tabela de valores atualizada.</p>
+
+        <div class="form-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <form id="leadForm">
+                <div class="form-step active" id="step1">
+                    <input type="text" id="nome" name="nome" placeholder="Seu Nome Completo" required>
+                    <input type="email" id="email" name="email" placeholder="Seu Melhor E-mail" required>
+                    <input type="tel" id="telefone" name="telefone" placeholder="WhatsApp (com DDD)" required>
+                    <button type="button" class="btn-primary" onclick="Martech.nextStep()" style="width: 100%;">Próximo Passo</button>
+                </div>
+
+                <div class="form-step" id="step2">
+                    <select id="renda" name="renda" required>
+                        <option value="" disabled selected>Qual sua faixa de renda familiar mensal?</option>
+                        <option value="15k-25k">R$ 15.000 a R$ 25.000</option>
+                        <option value="25k-50k">R$ 25.000 a R$ 50.000</option>
+                        <option value="50k+">Acima de R$ 50.000</option>
+                    </select>
+                    <select id="momento" name="momento" required>
+                        <option value="" disabled selected>Qual seu momento de compra?</option>
+                        <option value="imediato">Pronto para mudar / Investir agora</option>
+                        <option value="3-6meses">Planejando para os próximos meses</option>
+                        <option value="estudando">Apenas estudando a região</option>
+                    </select>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Solicitar Atendimento VIP</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="martech-integration.js"></script>
+</body>
+</html>
