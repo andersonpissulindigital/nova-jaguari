@@ -18,14 +18,64 @@ const Martech = {
             document.getElementById('step1').classList.remove('active');
             document.getElementById('step2').classList.add('active');
             document.getElementById('progressFill').style.width = '100%';
+            
+            // Rastreio de avanço de etapa
+            window.dataLayer.push({
+                'event': 'form_step_1_complete',
+                'form_name': 'nova_jaguari_lead'
+            });
         } else {
             alert('Por favor, preencha todos os campos do primeiro passo.');
         }
     },
 
     init() {
+        this.initDataLayer();
         this.captureUTMs();
         this.bindFormEvents();
+        this.trackScroll();
+        this.trackButtons();
+    },
+
+    initDataLayer() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'martech_init',
+            'squad': 'apoena_imoveis',
+            'project': 'nova_jaguari'
+        });
+    },
+
+    trackScroll() {
+        const milestones = [25, 50, 75, 100];
+        const reached = new Set();
+
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+            
+            milestones.forEach(m => {
+                if (scrollPercent >= m && !reached.has(m)) {
+                    reached.add(m);
+                    window.dataLayer.push({
+                        'event': 'page_scroll',
+                        'scroll_depth': m + '%'
+                    });
+                }
+            });
+        }, { passive: true });
+    },
+
+    trackButtons() {
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('.btn-primary, button, .btn-home');
+            if (btn) {
+                window.dataLayer.push({
+                    'event': 'btn_click',
+                    'btn_text': btn.innerText.trim(),
+                    'page_url': window.location.href
+                });
+            }
+        });
     },
 
     captureUTMs() {
@@ -61,6 +111,13 @@ const Martech = {
             if (response.ok) {
                 // Sucesso: Ativar flag de conversão para acesso à página de obrigado
                 sessionStorage.setItem('apoena_conversion', 'true');
+                
+                // Rastreio de Conversão no GTM
+                window.dataLayer.push({
+                    'event': 'lead_captured',
+                    'form_name': 'nova_jaguari_lead'
+                });
+
                 return true;
             } else {
                 throw new Error('Erro no servidor de recebimento.');
