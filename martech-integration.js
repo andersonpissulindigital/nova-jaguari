@@ -59,15 +59,18 @@ const Martech = {
             });
 
             if (response.ok) {
+                // Sucesso: Ativar flag de conversão para acesso à página de obrigado
+                sessionStorage.setItem('apoena_conversion', 'true');
                 return true;
             } else {
                 throw new Error('Erro no servidor de recebimento.');
             }
         } catch (error) {
             console.error('Falha na integração:', error);
-            // Mesmo com erro, salvamos localmente para não perder o lead caso o webhook falhe
+            // Mesmo com erro, salvamos localmente para não perder o lead
             this.saveLocalBackup(payload);
-            return true; // Retornamos true para o usuário não ser bloqueado por erro de rede
+            sessionStorage.setItem('apoena_conversion', 'true'); // Ativamos para não bloquear o usuário em falhas de rede
+            return true;
         }
     },
 
@@ -88,8 +91,8 @@ const Martech = {
 
                 const success = await this.submitLead(data);
                 if (success) {
-                    alert('Solicitação enviada com sucesso! Um consultor entrará em contato.');
-                    // window.location.href = 'obrigado.html'; // Redirecionamento Final
+                    form.reset(); // Limpa o formulário após envio
+                    window.location.href = 'obrigado.html'; // Redirecionamento Final
                 }
             });
         }
