@@ -8,11 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --slate-gray: #2F4F4F;
+            --slate-gray: #343434; /* Cinza Escuro Apoena */
             --eucalyptus-green: #556B2F;
-            --copper: #B87333;
-            --off-white: #FAF9F6;
-            --glass: rgba(250, 249, 246, 0.85);
+            --copper: #886a50;    /* Marrom Apoena */
+            --off-white: #f2f1ed;  /* Branco Apoena */
+            --glass: rgba(242, 241, 237, 0.85);
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -52,12 +52,9 @@
             border-bottom: 1px solid rgba(47, 79, 79, 0.1);
         }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--slate-gray);
-            letter-spacing: 1px;
+        .logo img {
+            height: 40px;
+            display: block;
         }
 
         /* --- Hero --- */
@@ -179,11 +176,18 @@
             width: 100%;
             padding: 15px;
             margin-bottom: 20px;
-            background: transparent;
-            border: 1px solid rgba(250, 249, 246, 0.3);
-            color: white;
+            background: rgba(242, 241, 237, 0.05); /* Fundo transparente/vidro */
+            border: 1px solid rgba(242, 241, 237, 0.3);
+            color: var(--off-white);
             font-family: inherit;
             border-radius: 4px;
+            outline: none;
+        }
+
+        /* Corrigir visibilidade das opções no dropdown */
+        select option {
+            background-color: var(--slate-gray);
+            color: var(--off-white);
         }
 
         input::placeholder {
@@ -229,7 +233,9 @@
 <body>
 
     <header>
-        <div class="logo">NOVA JAGUARI</div>
+        <div class="logo">
+            <img src="logo-apoena.png" alt="Apoena Imóveis Logo">
+        </div>
         <a href="#contato" class="btn-primary" style="padding: 10px 20px;">Falar com Consultor</a>
     </header>
 
