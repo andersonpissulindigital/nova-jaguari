@@ -67,10 +67,11 @@
             justify-content: center;
             text-align: center;
             padding: 0 10%;
-            background: linear-gradient(rgba(47, 79, 79, 0.6), rgba(47, 79, 79, 0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920');
+            /* Ajuste de Contraste: Gradiente mais escuro para garantir legibilidade */
+            background: linear-gradient(rgba(52, 52, 52, 0.75), rgba(52, 52, 52, 0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
             background-position: center;
-            color: white;
+            color: var(--off-white);
             animation: fadeIn 1s ease-out;
         }
 
@@ -191,7 +192,7 @@
         }
 
         input::placeholder {
-            color: rgba(250, 249, 246, 0.5);
+            color: rgba(242, 241, 237, 0.7); /* Contraste aumentado */
         }
 
         .progress-bar {
@@ -225,8 +226,42 @@
 
         @media (max-width: 900px) {
             .grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
             header { height: 60px; }
+            
+            section {
+                padding: 60px 8%; /* Padding mais compacto */
+            }
+
+            .hero h1 { 
+                font-size: 2.5rem; /* Título reduzido */
+                line-height: 1.1;
+                margin-bottom: 1rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                line-height: 1.4;
+                margin-bottom: 2rem;
+            }
+
+            .text-side h2 {
+                font-size: 2.2rem; /* Título secundário reduzido */
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+            
+            .text-side p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .logo img {
+                height: 32px;
+            }
         }
     </style>
 </head>
