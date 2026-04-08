@@ -35,7 +35,10 @@ Este documento contém os textos e configurações exatas para "copiar e colar" 
 ### Público-Alvo:
 - **Geolocalização:** Barueri (Alphaville/Tamboré), Santana de Parnaíba (+15km), São Paulo (Zonas Nobres).
 - **Interesses:** Investimento Imobiliário, Mercado Imobiliário, Arquitetura, Lazer de Luxo.
-- **Diferencial:** Excluir corretores de imóveis (Filtro por cargos).
+- **Diferencial (Qualidade):** 
+    - **Excluir:** Viajantes Frequentes (Para evitar turistas/pessoas de passagem).
+    - **Excluir:** Corretores de imóveis (Filtro por cargos).
+- **Tráfego Preditivo:** O Meta agora foca em quem "esteve ou mora", então a copy deve ser direta para moradores locais.
 
 ### Criativo A (Racional - Carrossel):
 - **Headline:** Mais casa pelo preço de um apartamento.
